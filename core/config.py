@@ -5,8 +5,8 @@ from pydantic import AnyHttpUrl, BaseSettings, HttpUrl, validator
 
 class Settings(BaseSettings):
     API_V1_STR: str = ""
-    SERVER_NAME: str
-    SERVER_HOST: AnyHttpUrl
+    SERVER_NAME: str = "localhost"
+    SERVER_HOST: AnyHttpUrl = "http://localhost:8000"
     # BACKEND_CORS_ORIGINS is a JSON-formatted list of origins
     # e.g: '["http://localhost", "http://localhost:4200", "http://localhost:3000", \
     # "http://localhost:8080", "http://local.dockertoolbox.tiangolo.com"]'
@@ -20,9 +20,9 @@ class Settings(BaseSettings):
             return v
         raise ValueError(v)
 
-    PROJECT_NAME: str
-    PROJECT_DESCRIPTION: str
-    PROJECT_VERSION: str
+    PROJECT_NAME: str = "DobrySennik.pl (unofficial) API"
+    PROJECT_DESCRIPTION: str = "Unofficial wrapper for DobrySennik.pl website that returns data in json format."
+    PROJECT_VERSION: str = "0.0.1"
 
     SENTRY_DSN: Optional[HttpUrl] = None
 
